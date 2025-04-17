@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="static/style.css">
+    <link rel="shortcut icon" href="logo.png" type="image/x-icon">
+</head>
+
+<body class="login">
+    <img id="logo" src="/static/img/Logo_sem_imagem.png">
+    <div class="caixa-de-login">
+        <form action="/login" method="POST">
+            <h2>Login</h2>
+            <p>Usuário:</p>
+            <input type="text" id="email" name="email" required>
+
+            <p>Senha:</p>
+            <input type='password' id='password' name='senha' placeholder="Digite sua senha">
+            <br>
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+            <div class="resposta">
+                {% for message in messages %}
+                <p>{{ message }}</p>
+                {% endfor %}
+            </div>
+            {% endif %}
+            {% endwith %}
+            {% block body %}{% endblock %}
+            <br>
+            <div class="botoes">
+                <button type="submit">Entrar</button>
+            </div>
+        </form>
+
+    </div>
+
+</body>
+
+</html>

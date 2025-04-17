@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro</title>
+    <!-- Criar link HTML e CSS -->
+    <link rel="stylesheet" href="/static/style.css">
+    <!-- Adicionar o ícone (favicon) do site -->
+    <link rel="shortcut icon" href="logo.png" type="image/x-icon">
+</head>
+
+<body class="cadastro">
+    <img id="logo" src="/static/img/Logo_sem_imagem.png">
+    <div class="caixa-de-login">
+        <h2>Crie sua conta</h2>
+        <!-- ADICIONAR O FORM AO INICIO -->
+        <form action="/cadastro" method="POST" onsubmit="return verificarSenhas()">
+            <p>Usuário:</p>
+            <input type='text' name='usuario' placeholder="Digite seu usuário">
+            <p>E-mail:</p>
+            <input type='text' name='email' placeholder="Digite seu e-mail">
+            <p>Senha:</p>
+            <input type='password' name='senha' placeholder="Digite sua senha">
+            <p>Confirme sua senha:</p>
+            <input type='password' name='confirmar_senha' placeholder="Digite sua senha">
+            <br>
+            <br>
+            <div class="botoes">
+                <!-- <a href="">Criar conta</a> -->
+                <!-- Mudar o a para um button -->
+                <button type="submit">Criar conta</button>
+            </div>
+            <!-- FECHAR O FORMS AO FIM -->
+        </form>
+
+    </div>
+    
+    <script src="/static/script.js"></script>
+</body>
+
+</html>

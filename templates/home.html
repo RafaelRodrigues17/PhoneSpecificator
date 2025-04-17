@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="static/estilo.css">
+    <style>
+        .botao-editar {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 6px 10px;
+            margin-right: 10px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .botao-excluir {
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            padding: 6px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .botoes-musica {
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body id="home">
+    <img id="logo-home" src="/static/img/Logo texto.png">
+
+    <div class="botoes">
+        <a href="/novo_celular"> + Anunciar um novo dispositivo</a>
+    </div>
+
+    <!-- Seção de "Minhas Criações" -->
+    <section class="my-creations">
+        <h2>Minhas Criações</h2>
+        <div class="cards-container">
+            {% for celular in celulares %}
+            <div class="caixa-de-login">
+              <img src="{{ celular[5] }}" alt="Capa da música" class="capa-musica">
+              <h3>{{ musica[1] }}</h3> <!-- Nome da música -->
+              <p><strong>Marca:</strong> {{ celular[2] }}</p>
+              <p><strong>Modelo:</strong> {{ celular[3] }}</p>
+              <p><strong>Estado:</strong> {{ celular[4] }}</p>
+              
+              <a href="{{ url_for('editar_celular', id=celular[0]) }}" class="btn-editar">Editar</a>
+              <a href="{{ url_for('excluir_celular', id=celular[0]) }}" class="btn-excluir">Excluir</a>
+            </div>
+          {% endfor %}
+          
+        </div>
+        <input type="button" onclick="window.location.href='/excluir_usuario'" value="Excluir usuário">
+    </section>
+
+</body>
+</html>
