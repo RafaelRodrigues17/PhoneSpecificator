@@ -44,6 +44,55 @@ def cadastro():
             return "Ocorreu um erro ao cadastrar usuário"  # Caso contrário, exibe mensagem de erro
     else:
         return render_template('cadastro.html')  # Se for GET, renderiza o formulário de cadastro
+    
+@app.route('/excluir_usuario')
+def excluir_usuario():
+    email = session['usuario']
+    
+    if database.excluir_usuario(email):
+        return redirect(url_for('login'))
+    else:
+        return "Ocorreu um erro ao excluir o usuário"
+
+@app.route('/novo_celular', methods=["GET", "POST"])
+def nova_musica():
+    if request.method == "POST":
+        form = request.form
+        if database.novo_celular(form):
+            return redirect(url_for('home'))  # redireciona para a função `home`
+        else:
+            return "Ocorreu um erro ao registrar o celular"
+    else:
+        return render_template('novo_celular.html')
+    
+@app.route('/editar_celular/<int:id>', methods=["GET", "POST"])
+def editar_celular(id):
+    email = session.get("usuario")
+    if not email:
+        return redirect(url_for('login'))
+
+    if request.method == "POST":
+        form = request.form
+        form = dict(form)
+        form['id'] = id
+        if database.editar_celular(form):
+            return redirect(url_for('home'))
+        else:
+            return "Erro ao editar celular"
+    else:
+        celular = database.obter_celular_por_id(id, email)
+        if not celular:
+            return "celular não encontrado"
+        return render_template('editar_celular.html', celular=celular)
+
+@app.route("/excluir_celular/<int:id>")
+def excluir_celular(id):
+    email = session.get("usuario")
+    if not email:
+        return redirect(url_for("login"))
+
+    database.excluir_celular(id)
+    return redirect(url_for("home"))
 
 if __name__ == '__main__':
     app.run(debug=True) 

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Música</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <img id="logo" src="/static/img/Logo.png" alt="Logo">
+    <div class="caixa-de-login">
+        <form method="POST">
+            <h2>Editar celular</h2>
+
+            <p>Marca:</p>
+            <input type="text" name="marca" value="{{ celular[1] }}" required>
+
+            <p>Modelo:</p>
+            <input type="text" name="modelo" value="{{ celular[2] }}" required>
+
+            <p>Processador:</p>
+            <input type="text" name="processador" value="{{ celular[3] }}" required>
+    
+            <p>Armazenamento:</p>
+            <input type="text" name="armazenamento" value="{{ celular[4] }}" required>
+
+            <p>RAM:</p>
+            <input type="text" name="ram" value="{{ celular[5] }}" required>
+
+            <p>URL da Nova Capa:</p>
+            <input type="text" name="caminho_capa" value="{{ celular[6] }}" required>
+
+            <div class="botoes">
+                <button type="submit">Salvar Alterações</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
