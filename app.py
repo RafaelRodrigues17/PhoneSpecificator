@@ -55,7 +55,7 @@ def excluir_usuario():
         return "Ocorreu um erro ao excluir o usuário"
 
 @app.route('/novo_celular', methods=["GET", "POST"])
-def nova_musica():
+def novo_celular():
     if request.method == "POST":
         form = request.form
         if database.novo_celular(form):
